@@ -9,7 +9,6 @@ import Chart from '../component/Chart'
 import './Home.scss'
 
 
-
 function Home() {
   const navigate = useNavigate();
 

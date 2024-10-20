@@ -12,13 +12,14 @@ import { useNavigate } from 'react-router-dom';
 
 function Sidebar() {
   const navigate = useNavigate(); // ใช้ useNavigate เพื่อเปลี่ยนหน้า
+  const token = localStorage.getItem("token"); // ตรวจสอบ token ใน localStorage
+  const username = localStorage.getItem("username"); // ดึง username จาก localStorage
 
   const handleLogout = () => {
     localStorage.removeItem("token"); // ลบ token ออกจาก localStorage
+    localStorage.removeItem("username"); // ลบ username ออกจาก localStorage
     navigate("/login"); // เปลี่ยนหน้าไปที่ login
   };
-
-  const token = localStorage.getItem("token"); // ตรวจสอบ token ใน localStorage
 
   return (
     <div className="sidebar">
@@ -52,18 +53,19 @@ function Sidebar() {
             </li>
           </Link>
           <Link to="/market" style={{ textDecoration: "none" }}>
-          <li>
-            <PollIcon className="icon" />
-            <span>Market</span>
-          </li>
+            <li>
+              <PollIcon className="icon" />
+              <span>Market</span>
+            </li>
           </Link>
           <p className="title">User</p>
-          <li>
-            <AccountCircleOutlinedIcon className="icon" />
-            <span>Profile</span>
-          </li>
+          <Link to="/profile" style={{ textDecoration: "none" }}>
+            <li>
+              <AccountCircleOutlinedIcon className="icon" />
+              <span>Profile</span>
+            </li>
+          </Link>
 
-          {/* แสดง Login li เฉพาะเมื่อไม่มี token */}
           {!token && (
             <Link to="/login" style={{ textDecoration: "none" }}>
               <li>
@@ -73,16 +75,17 @@ function Sidebar() {
             </Link>
           )}
 
-          {/* แสดง Lockout li เฉพาะเมื่อมี token */}
           {token && (
             <li onClick={handleLogout} style={{ cursor: "pointer" }}>
               <PowerSettingsNewIcon className="icon" />
-              <span>Lockout</span>
+              <span>Logout</span>
             </li>
           )}
         </ul>
       </div>
-      <div className="bottom"></div>
+      <div className="bottom">
+        {token && <p className="username">Logged in as: {username}</p>} 
+      </div>
       <div className="colorOption"></div>
       <div className="colorOption"></div>
       <div className="colorOption"></div>

@@ -4,6 +4,7 @@ import './signup.scss';
 
 const SignUp = () => {
   const navigate = useNavigate(); 
+  const [username, setUsername] = useState(''); // State สำหรับ username
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -23,7 +24,7 @@ const SignUp = () => {
       const response = await fetch('http://localhost:5000/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ username, email, password }), // รวม username ในข้อมูลที่ส่ง
       });
   
       if (!response.ok) {
@@ -51,6 +52,17 @@ const SignUp = () => {
       <h2 className='title'>Sign Up</h2>
       {error && <p className="error-message">{error}</p>}
       <form onSubmit={handleSignUp}>
+        <div className="form-group">
+          <label htmlFor="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)} // จัดการการเปลี่ยนแปลงของ username
+            placeholder="Enter your username"
+            required
+          />
+        </div>
         <div className="form-group">
           <label htmlFor="email">Email</label>
           <input

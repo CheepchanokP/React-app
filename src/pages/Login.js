@@ -31,7 +31,7 @@ const Login = () => {
       localStorage.setItem('token', data.token); // เก็บ token ใน localStorage
 
       alert('ล็อกอินสำเร็จ!');
-      navigate('/home'); // ไปยังหน้า home หลังล็อกอินสำเร็จ
+      navigate('/'); // ไปยังหน้า home หลังล็อกอินสำเร็จ
     } catch (error) {
       setError('การล็อกอินล้มเหลว กรุณาลองใหม่อีกครั้ง');
     }

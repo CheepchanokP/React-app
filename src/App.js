@@ -6,6 +6,7 @@ import Prediction from './pages/Prediction';
 import Ports from './pages/Ports';
 import Market from './pages/Market';
 import SignUp from './pages/Signup';
+import Profile from './pages/Profile';
 
 
 
@@ -20,6 +21,7 @@ function App  ()  {
           <Route path='market' element={<Market/>}/>
           <Route path='login' element={<Login/>}/>
           <Route path='signup' element={<SignUp/>}/>
+          <Route path='profile' element={<Profile/>}/>
           <Route path='prediction' element={<Prediction/>}/>
         </Route>
       </Routes>
