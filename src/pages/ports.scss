@@ -1,0 +1,16 @@
+.ports{
+    display: flex;
+
+    .portsContainer{
+        flex: 6;
+
+        .body{
+            padding: 30px 50px 20px 50px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            height: 35vh;
+        }
+    }
+}

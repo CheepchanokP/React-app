@@ -5,6 +5,9 @@ import './Navbar.scss'
 import NotificationsIcon from '@mui/icons-material/Notifications'; */ 
 
 function Navbar() {
+
+  const username = localStorage.getItem("username");
+
   return (
     <div className='navbar'>
       <div className='wrapper'>
@@ -22,6 +25,9 @@ function Navbar() {
           {/* <div className='item'>
             <img src='https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' alt='' className='avatar'/>
           </div> */}
+           <div className='item'>
+              <span>Welcome, {username}</span>
+            </div>
         </div>
       </div>
     </div>

@@ -13,7 +13,7 @@ import { useNavigate } from 'react-router-dom';
 function Sidebar() {
   const navigate = useNavigate(); // ใช้ useNavigate เพื่อเปลี่ยนหน้า
   const token = localStorage.getItem("token"); // ตรวจสอบ token ใน localStorage
-  const username = localStorage.getItem("username"); // ดึง username จาก localStorage
+  
 
   const handleLogout = () => {
     localStorage.removeItem("token"); // ลบ token ออกจาก localStorage
@@ -84,11 +84,12 @@ function Sidebar() {
         </ul>
       </div>
       <div className="bottom">
-        {token && <p className="username">Logged in as: {username}</p>} 
+      <div className="colorOption"></div>
+      <div className="colorOption"></div>
+      <div className="colorOption"></div>
+        
       </div>
-      <div className="colorOption"></div>
-      <div className="colorOption"></div>
-      <div className="colorOption"></div>
+      
     </div>
   );
 }
