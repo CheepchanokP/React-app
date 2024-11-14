@@ -1,16 +1,43 @@
-.ports{
+.ports {
     display: flex;
 
-    .portsContainer{
+    .portsContainer {
         flex: 6;
 
-        .body{
+        .body {
             padding: 30px 50px 20px 50px;
             display: flex;
             gap: 20px;
             justify-content: center;
             align-items: center;
             height: 35vh;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .ports {
+        .portsContainer {
+            .body {
+                padding: 20px 30px 15px 30px; 
+                gap: 15px; 
+                height: 30vh; 
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .ports {
+        flex-direction: column; 
+
+        .portsContainer {
+            .body {
+                padding: 15px 20px 10px 20px; 
+                flex-direction: column; 
+                gap: 10px; 
+                height: auto; 
+            }
         }
     }
 }

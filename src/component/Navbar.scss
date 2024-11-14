@@ -1,4 +1,4 @@
-.navbar{
+.navbar {
     height: 50px;
     border-bottom: 0.5px solid lightgray;
     display: flex;
@@ -6,46 +6,112 @@
     font-size: 14px;
     color: #555;
 
-    .wrapper{
+    .wrapper {
         width: 100%;
         display: flex;
         padding: 20px;
         align-items: center;
         justify-content: space-between;
 
-        .search{
+        .search {
             display: flex;
             align-items: center;
             padding: 3px;
 
-            input{
+            input {
                 border: none;
                 outline: none;
                 background: transparent;
 
-                &::placeholder{
+                &::placeholder {
                     font-size: 12px;
                 }
             }
-        }       
+        }
 
-        .items{
+        .items {
             display: flex;
             align-items: center;
-            
-            .item{
+
+            .item {
                 display: flex;
                 align-items: center;
                 margin-right: 20px;
-            
-                .icon{
+
+                .icon {
                     font-size: 20px;
                 }
 
-                .avatar{
+                .avatar {
                     width: 30px;
                     height: 30px;
                     border-radius: 50%;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        height: 45px;
+
+        .wrapper {
+            padding: 15px;
+
+            .search {
+                input {
+                    font-size: 12px;
+                }
+            }
+
+            .items {
+                .item {
+                    margin-right: 15px;
+
+                    .icon {
+                        font-size: 18px;
+                    }
+
+                    .avatar {
+                        width: 28px;
+                        height: 28px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        height: 40px;
+
+        .wrapper {
+            padding: 10px;
+            font-size: 12px; 
+
+            .search {
+                width: 50%; 
+                padding: 2px;
+
+                input {
+                    font-size: 11px;
+                }
+            }
+
+            .items {
+                .item {
+                    margin-right: 10px; 
+
+                    .icon {
+                        font-size: 16px;
+                    }
+
+                    .avatar {
+                        width: 25px;
+                        height: 25px;
+                    }
                 }
             }
         }

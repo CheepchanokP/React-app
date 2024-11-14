@@ -5,9 +5,9 @@
   padding: 20px;
   background-color: #ffffff;
   border-radius: 10px;
-  box-shadow: 10px 11px 29px 6px rgba(0,0,0,0.3);
-  -webkit-box-shadow: 10px 11px 29px 6px rgba(0,0,0,0.3);
-  -moz-box-shadow: 10px 11px 29px 6px rgba(0,0,0,0.3);
+  box-shadow: 10px 11px 29px 6px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 10px 11px 29px 6px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 10px 11px 29px 6px rgba(0, 0, 0, 0.3);
   font-family: 'Arial', sans-serif;
 
   h2 {
@@ -17,8 +17,8 @@
     font-size: 36px;
   }
 
-  .title{
-      color: #7b2df9;
+  .title {
+    color: #7b2df9;
   }
 
   .error-message {
@@ -73,11 +73,63 @@
     color: #007bff;
     text-align: center;
     cursor: pointer;
-    margin-top: 20px; 
+    margin-top: 20px;
     font-size: 14px;
 
     &:hover {
       text-decoration: underline;
+    }
+  }
+
+  @media (max-width: 768px) {
+    max-width: 90%; 
+    margin-top: 50px; 
+    padding: 15px; 
+
+    h2 {
+      font-size: 30px; 
+    }
+
+    .form-group {
+      input {
+        width: 100%; 
+      }
+    }
+
+    button {
+      padding: 10px; 
+      font-size: 14px; 
+    }
+
+    .go-to-login {
+      font-size: 12px; 
+      margin-top: 15px; 
+    }
+  }
+
+  @media (max-width: 480px) {
+    max-width: 90%; 
+    padding: 10px; 
+    margin-top: 30px; 
+
+    h2 {
+      font-size: 24px; 
+    }
+
+    .form-group {
+      input {
+        padding: 8px; 
+      }
+    }
+
+    button {
+      padding: 10px; 
+      font-size: 14px; 
+    }
+
+    .go-to-login {
+      font-size: 12px; 
+      margin-top: 10px; 
     }
   }
 }

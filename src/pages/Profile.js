@@ -117,7 +117,6 @@ function Profile() {
       </div>
     </div>
 
-    {/* Modal สำหรับแก้ไขข้อมูลโปรไฟล์ */}
     {isModalOpen && (
       <div className='modal'>
         <div className='modalContent'>
@@ -147,7 +146,6 @@ function Profile() {
             onChange={(e) => setEditData({ ...editData, address: e.target.value })}
           />
 
-          {/* ส่วนอัปโหลดรูปภาพ */}
           <label>Profile Image</label>
           <input type='file' accept='image/*' onChange={handleImageUpload} />
           <img src={imagePreview} alt='Profile Preview' className='profileImgPreview' />

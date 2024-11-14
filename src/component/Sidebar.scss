@@ -1,38 +1,39 @@
-.sidebar{
-    width: 250px;
+.sidebar {
+    width: 200px;
     border-right: 0.5px solid lightgray;
     min-height: 100vh;
-    background: white;
+    background: #fff;
+    transition: width 0.3s ease;
 
-    .top{
+    .top {
         height: 50px;
         display: flex;
         align-items: center;
         justify-content: center;
 
-        .logo{
+        .logo {
             font-size: 20px;
             font-weight: bold;
             color: #7e3ded;
         }
     }
 
-    hr{
+    hr {
         margin: 0;
         height: 0;
         border-bottom: 0.5px solid lightgray;
     }
 
-    .center{
+    .center {
         padding-left: 10px;
         padding-right: 10px;
 
-        ul{
+        ul {
             list-style: none;
             margin: 0;
             padding: 0;
 
-            .title{
+            .title {
                 font-size: 13px;
                 font-weight: bold;
                 color: #999;
@@ -40,22 +41,22 @@
                 margin-bottom: 5px;
             }
 
-            li{
+            li {
                 display: flex;
                 align-items: center;
-                padding: 5px;   
+                padding: 5px;
                 cursor: pointer;
 
-                &:hover{
+                &:hover {
                     background: #dedbf7;
                 }
 
-                .icon{
+                .icon {
                     font-size: 18px;
                     color: #7e3ded;
                 }
 
-                span{
+                span {
                     font-size: 13px;
                     font-weight: 600;
                     color: #888;
@@ -64,41 +65,105 @@
             }
         }
 
-        .bottom{
+        .bottom {
             display: flex;
             align-items: center;
             margin: 10px;
-    
+
             .username {
-                margin: 0; 
+                margin: 0;
                 font-weight: bold;
-                color: #7e3ded; 
-              }
-    
-            .colorOption{
+                color: #7e3ded;
+            }
+
+            .colorOption {
                 width: 20px;
                 height: 20px;
                 border-radius: 5px;
                 border: 1px solid #7e3ded;
                 cursor: pointer;
-    
-                &:nth-child(1){
+
+                &:nth-child(1) {
                     background: whitesmoke;
                 }
-                &:nth-child(2){
+                &:nth-child(2) {
                     background: #333;
                 }
-                &:nth-child(3){
+                &:nth-child(3) {
                     background: darkblue;
                 }
             }
-    
-            
         }
     }
-
-   
-
-    
 }
 
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px; 
+
+        .center {
+            ul {
+                .title {
+                    font-size: 12px; 
+                }
+
+                li {
+                    padding: 8px;
+                    .icon {
+                        font-size: 16px;
+                    }
+                    span {
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        width: 100px; 
+        min-height: 100vh;
+        overflow-y: auto;
+
+        .top .logo {
+            font-size: 16px; 
+        }
+
+        .center {
+            padding-left: 5px;
+            padding-right: 5px;
+
+            ul {
+                .title {
+                    font-size: 11px;
+                }
+
+                li {
+                    padding: 6px;
+                    flex-direction: column; 
+                    align-items: flex-start;
+
+                    .icon {
+                        font-size: 14px;
+                    }
+
+                    span {
+                        font-size: 11px;
+                        margin-left: 5px;
+                    }
+                }
+            }
+
+            .bottom {
+                flex-direction: column;
+                margin: 5px;
+
+                .username {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}
