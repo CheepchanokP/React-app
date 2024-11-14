@@ -1,19 +1,29 @@
+/* .widgets {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 20px; // เพิ่ม gap ระหว่าง Widget
+} */
+
 .widget {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap; // เพิ่ม flex-wrap เพื่อให้เนื้อหาไม่ซ้อนทับกัน
     width: 200px;
-    flex: 1;
+    /* flex: 1; */
     padding: 10px;
     box-shadow: 4px 4px 19px -3px rgba(139, 129, 129, 0.68);
     border-radius: 10px;
     height: 100px;
     transition: width 0.3s ease;
+    
 
     .left,
     .right {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        overflow: hidden; // เพิ่ม overflow เพื่อป้องกันการซ้อนทับ
 
         .title {
             font-weight: bold;
@@ -54,11 +64,11 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.6);  
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    
 }
 
 .modal-content {
@@ -85,8 +95,54 @@
         font-size: 16px;
         color: #666;
         margin-bottom: 25px;
-        text-align: center;
+        text-align: left;  // Align text to the left
+        line-height: 1.6;  // Increase line height for readability
+        
+        strong {
+            font-weight: bold;
+            color: #333;    // Set color to a darker shade for emphasis
+            display: inline-block;
+            width: 150px;   // Fixed width for label alignment
+        }
     }
+    .rediction-btn {
+        background-color: #7e3ded; // A distinctive purple color
+        color: #fff;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease, transform 0.3s ease;
+      
+        &:hover {
+          background-color: #5a29b6; // Darker shade for hover effect
+          transform: translateY(-2px); // Subtle lift on hover
+        }
+      
+        &:active {
+          background-color: #482494; // Darker still for active state
+          transform: translateY(0); // Reset on click
+          box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.15); // Slightly reduced shadow
+        }
+      
+        &:focus {
+          outline: none;
+          box-shadow: 0px 0px 5px 2px rgba(126, 61, 237, 0.5); // Glow effect on focus
+        }
+      }
+
+      .prediction-image {
+        margin-top: 20px;
+        img {
+          width: 100%;
+          max-width: 300px;
+          border-radius: 8px;
+          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+      }
 
     .close-btn {
         padding: 10px 20px;
@@ -105,6 +161,11 @@
 }
 
 @media (max-width: 768px) {
+    .widgets {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px; // เพิ่ม gap ระหว่าง Widget
+    }
+
     .widget {
         width: 150px;
         padding: 8px;
@@ -134,33 +195,3 @@
     }
 }
 
-@media (max-width: 480px) {
-    .widget {
-        width: 100%;
-        height: auto;
-        padding: 6px;
-
-        .left,
-        .right {
-            .title {
-                font-size: 12px;
-            }
-
-            .counter {
-                font-size: 20px;
-            }
-
-            .link {
-                font-size: 10px;
-            }
-
-            .percentage {
-                font-size: 13px;
-            }
-        }
-    }
-
-    .modal-content {
-        width: 95%;
-    }
-}

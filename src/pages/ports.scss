@@ -1,43 +1,494 @@
 .ports {
-    display: flex;
+  display: flex;
 
-    .portsContainer {
-        flex: 6;
+  .portsContainer {
+    flex: 6;
 
-        .body {
-            padding: 30px 50px 20px 50px;
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            align-items: center;
-            height: 35vh;
+    .body {
+      padding: 30px 50px 20px 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 35vh;
+
+      .portfolio {
+        padding: 20px;
+      }
+
+      .portfolio-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: Arial, sans-serif;
+        margin: 20px 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+
+        thead {
+          background-color: #f4f4f4;
+          color: #333;
+          text-align: left;
+
+          th {
+            padding: 12px 27px;
+            font-weight: 600;
+
+          }
         }
+
+        tbody {
+          tr {
+            &:nth-child(even) {
+              background-color: #f9f9f9;
+            }
+
+            &:hover {
+              background-color: #e6f7ff;
+            }
+
+            td {
+              padding: 10px 25px;
+              border-bottom: 1px solid #ddd;
+              color: #333;
+
+
+              button {
+                padding: 6px 12px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 14px;
+                font-weight: 500;
+
+                &:focus {
+                  outline: none;
+                }
+
+                &:hover {
+                  opacity: 0.9;
+                }
+              }
+
+              .view-button {
+                background-color: #3498db;
+                color: #fff;
+
+                &:hover {
+                  background-color: #2980b9;
+                }
+              }
+
+              .delete-button {
+                background-color: #e74c3c;
+                color: #fff;
+
+                &:hover {
+                  background-color: #c0392b;
+                }
+              }
+            }
+          }
+        }
+
+        th,
+        td {
+          border-bottom: 1px solid #ddd;
+        }
+      }
     }
+  }
 }
+
+.modal,
+.modalTransaction,
+.modalEditportname,
+.modalDeleteport {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent,
+.modalTransaction-Content,
+.modalEditportname-Content,
+.modalDeleteport-Content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  width: 450px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.closeButton {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 25px;
+  color: #aaa;
+  cursor: pointer;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #000;
+  }
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  color: #333;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+input {
+  padding: 12px 15px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+  &:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.4);
+    outline: none;
+  }
+}
+
+button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  width: auto;
+  margin-top: 10px;
+  gap: 10px;
+  background-color: #4CAF50;
+  color: #ffffff;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &.view-button {
+    background-color: #3498db;
+    color: #fff;
+    margin-right: 10px;
+
+    &:hover {
+      background-color: #2980b9;
+    }
+  }
+
+  &.addTransaction-button {
+    background-color: #3498db;
+    color: #fff;
+    margin-right: 10px;
+
+    &:hover {
+      background-color: #2980b9;
+    }
+  }
+
+  &.editPortfolio-button {
+    background-color: #3498db;
+    color: #fff;
+    margin-right: 10px;
+
+    &:hover {
+      background-color: #2980b9;
+    }
+  }
+
+  &.delete-button {
+    background-color: #e74c3c;
+    color: #fff;
+
+    &:hover {
+      background-color: #c0392b;
+    }
+  }
+}
+
+.modalTransaction-Content {
+  width: 80%;
+  max-width: 900px;
+  overflow: auto;
+}
+
+h3 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  color: #333;
+}
+
+.portfolioDetail-Table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  margin: 20px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+  thead {
+    background-color: #f4f4f4;
+    color: #333;
+    text-align: left;
+
+    th {
+      padding: 12px 15px;
+      font-weight: 600;
+      font-size: 16px;
+    }
+  }
+
+  tbody {
+    tr {
+      &:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      &:hover {
+        background-color: #e6f7ff;
+      }
+
+      td {
+        padding: 10px 15px;
+        border-bottom: 1px solid #ddd;
+        font-size: 14px;
+        color: #333;
+      }
+    }
+  }
+
+  th,
+  td {
+    border-bottom: 1px solid #ddd;
+  }
+
+  .deleteTransaction-button {
+    padding: 6px 12px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #c0392b;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+h4 {
+  font-size: 22px;
+  margin-bottom: 25px;
+  margin-top: 10px;
+  color: #333;
+  text-align: center;
+}
+
+p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+
+  &:focus {
+    border-color: #4CAF50;
+    outline: none;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.4);
+  }
+}
+
+.saveName-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 12px 15px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #45a049;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+
+.closeButton {
+position: absolute;
+top: 10px;
+right: 10px;
+font-size: 24px;
+color: #aaa;
+cursor: pointer;
+transition: color 0.3s ease;
+
+&:hover {
+  color: #333;
+}
+}
+h5 {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.error {
+  font-size: 14px;
+  color: #e74c3c;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.modalButtons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+
+  button {
+    padding: 12px 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 48%;
+    transition: background-color 0.3s ease;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  .deletePort {
+    background-color: #e74c3c;
+    color: white;
+
+    &:hover {
+      background-color: #c0392b;
+    }
+
+    &:disabled {
+      background-color: #ddd;
+      cursor: not-allowed;
+    }
+  }
+
+  .cancelDelete {
+    background-color: #3498db;
+    color: white;
+
+    &:hover {
+      background-color: #2980b9;
+    }
+
+    &:disabled {
+      background-color: #ddd;
+      cursor: not-allowed;
+    }
+  }
+}
+
+
+.closeButton {
+position: absolute;
+top: 10px;
+right: 10px;
+font-size: 24px;
+color: #aaa;
+cursor: pointer;
+transition: color 0.3s ease;
+
+&:hover {
+  color: #333;
+}
+}
+
+
 
 @media (max-width: 768px) {
-    .ports {
-        .portsContainer {
-            .body {
-                padding: 20px 30px 15px 30px; 
-                gap: 15px; 
-                height: 30vh; 
-            }
-        }
-    }
-}
+  .modalTransaction-Content {
+    width: 90%;
+    padding: 20px;
+  }
 
-@media (max-width: 480px) {
-    .ports {
-        flex-direction: column; 
+  h3 {
+    font-size: 18px;
+  }
 
-        .portsContainer {
-            .body {
-                padding: 15px 20px 10px 20px; 
-                flex-direction: column; 
-                gap: 10px; 
-                height: auto; 
-            }
-        }
+  .portfolioDetail-Table {
+    font-size: 12px;
+
+    th,
+    td {
+      padding: 8px 10px;
     }
+  }
 }

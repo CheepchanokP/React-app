@@ -1,4 +1,4 @@
-import React from 'react'
+/* import React from 'react'
 import './featured.scss'
 
 function Featured() {
@@ -7,4 +7,4 @@ function Featured() {
   )
 }
 
-export default Featured
+export default Featured */

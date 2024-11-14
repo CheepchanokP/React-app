@@ -25,7 +25,7 @@ function Sidebar() {
     <div className="sidebar">
       <div className="top">
         <Link to="/" style={{ textDecoration: "none" }}>
-          <span className="logo">CP</span>
+          <span className="logo">PP</span>
         </Link>
       </div>
       <hr />
@@ -48,7 +48,7 @@ function Sidebar() {
           </Link>
           <Link to="/prediction" style={{ textDecoration: "none" }}>
             <li>
-              <TrendingUpIcon className="icon" />
+              <TroubleshootIcon className="icon" />
               <span>Prediction</span>
             </li>
           </Link>

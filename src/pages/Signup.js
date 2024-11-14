@@ -4,7 +4,7 @@ import './signup.scss';
 
 const SignUp = () => {
   const navigate = useNavigate(); 
-  const [username, setUsername] = useState(''); // State สำหรับ username
+  const [username, setUsername] = useState(''); 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -13,31 +13,30 @@ const SignUp = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
   
-    // ตรวจสอบว่ารหัสผ่านและการยืนยันรหัสผ่านตรงกันหรือไม่
     if (password !== confirmPassword) {
       setError('Passwords do not match');
       return;
     }
   
     try {
-      // ส่งข้อมูลไปยัง API signup
-      const response = await fetch('http://localhost:5000/signup', {
+      const response = await fetch('http://localhost:5000/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, email, password }), // รวม username ในข้อมูลที่ส่ง
+        body: JSON.stringify({ username, email, password }),
       });
   
       if (!response.ok) {
         const errorData = await response.json();
-        setError(errorData.error); // แสดง error จาก backend หากมี
+        setError(errorData.error);
         return;
       }
   
-      const data = await response.json(); // รับ token จาก API
-      localStorage.setItem('token', data.token); // เก็บ token ใน localStorage
+      const data = await response.json();
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('username', username); 
   
       alert('Successfully registered!');
-      navigate('/home'); // ไปยังหน้า home หลังการลงทะเบียนสำเร็จ
+      navigate('/');
     } catch (error) {
       setError('Error during sign up. Please try again.');
     }
@@ -58,7 +57,7 @@ const SignUp = () => {
             type="text"
             id="username"
             value={username}
-            onChange={(e) => setUsername(e.target.value)} // จัดการการเปลี่ยนแปลงของ username
+            onChange={(e) => setUsername(e.target.value)}
             placeholder="Enter your username"
             required
           />

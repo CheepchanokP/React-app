@@ -31,7 +31,8 @@
 
         .items {
             display: flex;
-            align-items: center;
+            align-items: right;
+            margin-left: auto;
 
             .item {
                 display: flex;

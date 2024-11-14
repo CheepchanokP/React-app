@@ -1,4 +1,4 @@
-import React from "react";
+/* import React from "react";
 import "./chart.scss";
 import {
   AreaChart,
@@ -101,3 +101,4 @@ function Chart({title}) {
 }
 
 export default Chart;
+ */

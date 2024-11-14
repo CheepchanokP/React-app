@@ -12,28 +12,27 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
+  
     try {
-      // ส่งข้อมูลเข้าสู่ระบบไปยัง API
       const response = await fetch('http://localhost:5000/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
       });
-
+  
       if (!response.ok) {
         const errorData = await response.json();
-        setError(errorData.error); // แสดงข้อผิดพลาดจาก API
+        setError(errorData.error);
         return;
       }
-
+  
       const data = await response.json();
-      localStorage.setItem('token', data.token); // เก็บ token ใน localStorage
-
-      alert('ล็อกอินสำเร็จ!');
-      navigate('/'); // ไปยังหน้า home หลังล็อกอินสำเร็จ
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('username', data.username);  
+      alert('Successfully logged in!');
+      navigate('/');
     } catch (error) {
-      setError('การล็อกอินล้มเหลว กรุณาลองใหม่อีกครั้ง');
+      setError('Error during login. Please try again.');
     }
   };
 

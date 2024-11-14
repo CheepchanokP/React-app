@@ -1,18 +1,26 @@
-.market{
+.market {
     display: flex;
 
-    .marketContainer{
+    .marketContainer {
         flex: 6;
 
-        .widgets, .charts{
-            display: flex;
+        .widgets {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); // 5 columns
+            grid-template-rows: repeat(7, auto);   // 6 rows with auto height
             padding: 20px;
-            gap: 20px;
-        }
-
-        .charts{
-            padding: 5px 20px;
-            
+            gap: 20px; 
         }
     }
+}
+
+.prediction-image-container {
+  max-width: 100%;
+  margin: 20px 0;
+  
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
 }

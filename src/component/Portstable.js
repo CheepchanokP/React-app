@@ -1,84 +1,53 @@
-import React from 'react'
+/* import React from 'react'
 import { useEffect, useState } from 'react';
-import '../component/portstable.scss'
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
+import './portstable.scss'
 
 function Portstable() {
-    const [rows, setRows] = useState([]);  // State to store API data
-    const [loading, setLoading] = useState(true);  // Loading state
-    const [error, setError] = useState(null);  // Error state
-  
-    useEffect(() => {
-      // Fetch data from the API
-      fetch('https://api.example.com/data')  // Replace with your API URL
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          return response.json();
-        })
-        .then((data) => {
-          // Assuming the API returns an array of objects with name, price, and change properties
-          setRows(data);
-          setLoading(false);  // Stop loading when data is fetched
-        })
-        .catch((error) => {
-          console.error('Error fetching data:', error);
-          setError(error);
-          setLoading(false);  // Stop loading in case of error
-        });
-    }, []);
-  
-    if (loading) {
-      return <div>Loading...</div>;  // Show loading state
-    }
-  
-    if (error) {
-      return <div>Error: {error.message}</div>;  // Show error state
-    }
-  
-    return (
-      <div className='portstable'>
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell>Name</TableCell>
-                <TableCell align="right">Price&nbsp;($)</TableCell>
-                <TableCell align="right">Change&nbsp;(%)</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {rows.map((row) => (
-                <TableRow
-                  key={row.name}
-                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                >
-                  <TableCell component="th" scope="row">
-                    {row.name}
-                  </TableCell>
-                  <TableCell align="right">{row.price}</TableCell>
-                  <TableCell
-                    align="right"
-                    // Apply conditional styles for green if change > 0, red if change < 0
-                    style={{ color: row.change > 0 ? 'green' : row.change < 0 ? 'red' : 'black' }}
-                  >
-                    {row.change}
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </div>
-    );
-  }
-  
+  const [portfolio, setPortfolio] = useState(null);
 
-export default Portstable
+  useEffect(() => {
+    const fetchPortfolioData = async () => {
+      try {
+        const response = await fetch('/api/portfolios/1'); // Replace '1' with the actual portfolio ID you need
+        const data = await response.json();
+        setPortfolio(data);
+      } catch (error) {
+        console.error('Error fetching portfolio data:', error);
+      }
+    };
+
+    fetchPortfolioData();
+  }, []);
+
+  if (!portfolio) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <div className="portstable">
+      <h2>{portfolio.name} - Portfolio Details</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Transaction ID</th>
+            <th>Symbol</th>
+            <th>Shares</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          {portfolio.transactions.map((transaction) => (
+            <tr key={transaction.id}>
+              <td>{transaction.id}</td>
+              <td>{transaction.symbol}</td>
+              <td>{transaction.shares}</td>
+              <td>{transaction.price}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+export default Portstable; */

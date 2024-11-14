@@ -1,37 +1,40 @@
-import React from 'react'
-import './Navbar.scss'
-/* import SearchIcon from '@mui/icons-material/Search';
-/* import ContrastIcon from '@mui/icons-material/Contrast';
-import NotificationsIcon from '@mui/icons-material/Notifications'; */ 
+import React, { useState } from 'react';
+import './Navbar.scss';
+import SearchIcon from '@mui/icons-material/Search';
 
-function Navbar() {
+function Navbar({ onSearch }) {
+  const [searchTerm, setSearchTerm] = useState('');
+  const isMarketPage = location.pathname === '/market';
+  const username = localStorage.getItem('username') || 'Guest';
 
-  const username = localStorage.getItem("username");
+  const handleSearch = () => {
+    if (onSearch) {
+      onSearch(searchTerm);
+    }
+  };
 
   return (
     <div className='navbar'>
       <div className='wrapper'>
-        <div className='search'>
-          {/* <input type='text' placeholder='Search..'/>
-          <SearchIcon className='icon'/> */}
-        </div>
+        {isMarketPage && (
+          <div className='search'>
+            <input
+              type='text'
+              placeholder='Search in Market..'
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            <SearchIcon className='icon' onClick={handleSearch} />
+          </div>
+        )}
         <div className='items'>
-          {/* <div className='item'>
-            <ContrastIcon className='icon'/>
-          </div> */}
-          {/* <div className='item'>
-            <NotificationsIcon className='icon'/>
-          </div> */}
-          {/* <div className='item'>
-            <img src='https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' alt='' className='avatar'/>
-          </div> */}
-           <div className='item'>
-              <span>Welcome, {username}</span>
-            </div>
+          <div className='item'>
+            <span>Welcome, {username}</span>
+          </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;
